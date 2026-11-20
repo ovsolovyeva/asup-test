@@ -297,8 +297,8 @@
           <span>вопросов</span>
         </div>
         <div class="fact">
-          <b>80%</b>
-          <span>проходной балл</span>
+          <b>85%</b>
+          <span>проходной балл: не более 3 ошибок</span>
         </div>
         <div class="fact">
           <b>Один</b>
@@ -643,7 +643,8 @@ const QUESTIONS = [
 /* ================================================================
    СОСТОЯНИЕ ТЕСТА
    ================================================================ */
-const QUIZ_SIZE = 20;              // сколько вопросов в одной попытке
+const QUIZ_SIZE = 20;              // сколько вопросов в попытке
+const PASS_PERCENT = 85;           // проходной балл: не более 3 ошибок из 20              // сколько вопросов в одной попытке
 const ATTEMPTS_KEY = "asup_attempts_v1";   // попытки по ФИО в localStorage
 const JOURNAL_KEY = "asup_journal_v1";     // служебный журнал прохождений (только для выгрузки)
 
@@ -936,14 +937,14 @@ function finishQuiz() {
 
   const total = state.quiz.length;
   const percent = Math.round((correct / total) * 100);
-  const passed = percent >= 80;
+  const passed = percent >= PASS_PERCENT;
 
   el("res-percent").textContent = percent + "%";
   const status = el("res-status");
   status.textContent = passed ? "Тест пройден успешно" : "Тест не пройден";
   status.className = "status " + (passed ? "ok" : "fail");
   el("res-meta").textContent = "Верных ответов: " + correct + " из " + total +
-    ". Проходной балл: 80%.";
+    ". Проходной балл: " + PASS_PERCENT + "% (не более 3 ошибок).";
 
   // Служебная запись: дата, ФИО, номер попытки, результат (пользователю не показывается)
   logResult({
