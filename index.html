@@ -241,10 +241,15 @@
     .wrap{max-width:none; margin:0; padding:0}
     .card{box-shadow:none; padding:0; border-radius:0}
     .cert-outer{box-shadow:none; padding:6px; max-width:none;}
-    .cert{page-break-inside:avoid; padding:34px 46px 26px; min-height:272mm;
-      display:flex; flex-direction:column; justify-content:center}
+    .cert{page-break-inside:avoid; padding:26mm 46px 12mm; min-height:288mm;
+      display:flex; flex-direction:column; justify-content:space-between;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    .cert .c-title{margin-top:0}
+    .cert .c-emblem{margin:0 auto}
+    .cert .c-foot{margin-top:0}
+    .cert .c-place{margin-top:10px; margin-bottom:0}
     .cert .c-head{position:absolute; left:46px; right:46px; top:22px; margin-bottom:0}
-    @page{size:A4 portrait; margin:10mm}
+    @page{size:A4 portrait; margin:0}
   }
 
   /* ---------- Адаптив ---------- */
